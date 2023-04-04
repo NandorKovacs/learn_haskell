@@ -21,6 +21,7 @@ getWin (a, b)
   | otherwise = 0
   where c = filter (==(a, b))  [(Rock, Paper), (Paper, Scissor), (Scissor, Rock)]
 
-calcScore :: [(Action, Action)] -> [Int]
-calcScore xs = scanl (\x y -> (+x) (getWin y) * 3 + 1 + fromEnum (snd y)) 0 xs
+calcScore :: [(Action, Action)] -> Int
+calcScore [] = 0
+calcScore (x:xs) = getWin x * 3 + 1 + fromEnum (snd x) + calcScore xs
   
