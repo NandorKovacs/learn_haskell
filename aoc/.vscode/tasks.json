@@ -1,50 +1,17 @@
-
 {
-  // Automatically created by phoityne-vscode extension.
-
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
   "version": "2.0.0",
-  "presentation": {
-    "reveal": "always",
-    "panel": "new"
-  },
   "tasks": [
     {
-      // F7
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
-      "label": "haskell build",
+      "label": "test",
       "type": "shell",
-      //"command": "cabal configure && cabal build"
-      "command": "stack build"
+      "command": "./test.sh ${fileBasename}"
     },
     {
-      // F6
-      "group": "build",
+      "label": "run",
       "type": "shell",
-      "label": "haskell clean & build",
-      //"command": "cabal clean && cabal configure && cabal build"
-      "command": "stack clean && stack build"
-      //"command": "stack clean ; stack build"  // for powershell
-    },
-    {
-      // F8
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
-      "type": "shell",
-      "label": "haskell test",
-      //"command": "cabal test"
-      "command": "stack test"
-    },
-    {
-      // F6
-      "isBackground": true,
-      "type": "shell",
-      "label": "haskell watch",
-      "command": "stack build --test --no-run-tests --file-watch"
+      "command": "./run.sh ${fileBasename}"
     }
   ]
 }

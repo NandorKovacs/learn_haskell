@@ -1,9 +1,3 @@
-main = do
-  contents <- getContents
+f :: (Int -> Int) -> Int -> (Int -> Int)
+f a b = (\x -> x + a (2 * b) + 1)
 
-biggestElf :: [String] -> Int
-biggestElf x = do
-  let a = takeWhile (/="") x
-  let b =  sum $ map read::Int a
-  let c = biggestElf drop (length a) x
-  if c > b then c else b
