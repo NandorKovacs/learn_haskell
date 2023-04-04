@@ -8,7 +8,10 @@ main = do
 
 rucksackSum :: [String] -> Int
 rucksackSum [] = 0
-rucksackSum (x:xs) = (ord . getCommon) (take (length x / 2) x, drop (length x / 2) x) - ord 'a' + rucksackSum xs
+rucksackSum (x:xs) = (letterToInt . getCommon) (take (length x `div` 2) x, drop (length x `div` 2) x) + rucksackSum xs
+
+letterToInt :: Char -> Int
+letterToInt x = if isUpper x then ord x - ord 'A' + 27 else ord x - ord 'a' + 1
 
 getCommon :: (String, String) -> Char
 getCommon (a, b) = getDuplicate (nub a ++ nub b)
